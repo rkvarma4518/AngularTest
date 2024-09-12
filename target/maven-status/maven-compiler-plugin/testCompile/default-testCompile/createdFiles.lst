@@ -1,0 +1,15 @@
+StepDefinitions\CustomerLoginSteps.class
+PageObjects\CustomerPage.class
+Utilities\DBReader.class
+Utilities\PropertyReader.class
+Utilities\JsonReader.class
+PageObjects\HomePage.class
+Utilities\ExtentReportUtil.class
+StepDefinitions\Hooks.class
+Utilities\BaseClass.class
+MyRunner\TestNGTestRunner.class
+Utilities\ExcelDataReader.class
+Utilities\ValueComparison.class
+MyRunner\TestRunner.class
+PageObjects\BankManagerPage.class
+StepDefinitions\BankManagerSteps.class
