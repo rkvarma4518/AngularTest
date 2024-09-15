@@ -7,11 +7,11 @@ pool:
 jobs:
 - job: Install
   steps:
-    # Install Node.js
+    # Install Node.js (update to required version)
     - task: NodeTool@0
       inputs:
-        versionSpec: '14.x'
-      displayName: 'Install Node.js'
+        versionSpec: '18.x'
+      displayName: 'Install Node.js 18.x'
 
     # Install Angular CLI and dependencies
     - script: |
@@ -25,7 +25,7 @@ jobs:
       inputs:
         versionSpec: '21'
         jdkArchitectureOption: 'x64'
-        jdkSourceOption: 'MicrosoftHosted'
+        jdkSourceOption: 'PreInstalled'
       displayName: 'Install JDK 21'
 
     # Install Chrome 128.0.6613.137
