@@ -17,13 +17,11 @@ steps:
     npm install
   displayName: 'Install Angular CLI & dependencies'
 
-# Install JDK 21
 - task: JavaToolInstaller@0
   inputs:
-    version: '21'
+    versionSpec: '21'
     jdkArchitectureOption: 'x64'
-    jdkSourceOption: 'MicrosoftHosted'  # Specify that JDK should come from Microsoft's hosted tool cache
-  displayName: 'Install JDK 21'
+    jdkSourceOption: 'PreInstalled'
 
 # Build with Maven
 - task: Maven@3
