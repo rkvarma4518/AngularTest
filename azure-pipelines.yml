@@ -13,13 +13,6 @@ jobs:
         versionSpec: '18.x'
       displayName: 'Install Node.js 18.x'
 
-    # Install Angular CLI and dependencies
-    - script: |
-        npm install -g @angular/cli
-        npm install
-        ng --version # Verify Angular CLI installation
-      displayName: 'Install Angular CLI & dependencies'
-
     # Install JDK 21
     - task: JavaToolInstaller@0
       inputs:
