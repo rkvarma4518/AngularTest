@@ -34,6 +34,7 @@ jobs:
         wget -N https://storage.googleapis.com/chrome-for-testing-public/128.0.6613.137/linux64/chromedriver-linux64.zip
         unzip chromedriver-linux64.zip
         sudo mv chromedriver-linux64/chromedriver /usr/local/bin/
+        sudo chmod +x /usr/local/bin/chromedriver
       displayName: 'Install ChromeDriver 128.0.6613.137'
 
 - job: Build
@@ -43,7 +44,7 @@ jobs:
     - task: Maven@3
       inputs:
         mavenPomFile: 'pom.xml'
-        goals: 'clean install'
+        goals: 'clean install -X'
       displayName: 'Build Java Project with Maven'
 
     # Run Cucumber Tests
