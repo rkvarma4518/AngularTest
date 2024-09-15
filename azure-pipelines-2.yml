@@ -1,0 +1,30 @@
+trigger:
+- none  # Manual trigger
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: |
+    # Remove any existing chromedriver_linux64.zip
+    if [ -f chromedriver_linux64.zip ]; then
+      echo "Removing existing chromedriver_linux64.zip"
+      rm chromedriver_linux64.zip
+    fi
+
+    # Download ChromeDriver
+    wget -N https://chromedriver.storage.googleapis.com/128.0.6613.137/chromedriver_linux64.zip
+
+    # Unzip ChromeDriver
+    unzip chromedriver_linux64.zip
+
+    # Move ChromeDriver to /usr/local/bin/
+    sudo mv chromedriver_linux64/chromedriver /usr/local/bin/
+
+    # Set executable permissions
+    sudo chmod +x /usr/local/bin/chromedriver
+
+    # Verify installation
+    ls -l /usr/local/bin/chromedriver
+    chromedriver --version
+  displayName: 'Install and Verify ChromeDriver'
