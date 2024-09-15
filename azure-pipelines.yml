@@ -22,6 +22,7 @@ steps:
   inputs:
     version: '21'
     jdkArchitectureOption: 'x64'
+    jdkSourceOption: 'MicrosoftHosted'  # Specify that JDK should come from Microsoft's hosted tool cache
   displayName: 'Install JDK 21'
 
 # Build with Maven
