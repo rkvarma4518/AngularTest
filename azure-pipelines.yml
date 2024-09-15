@@ -17,6 +17,7 @@ jobs:
     - script: |
         npm install -g @angular/cli
         npm install
+        ng --version # Verify Angular CLI installation
       displayName: 'Install Angular CLI & dependencies'
 
     # Install JDK 21
@@ -24,8 +25,8 @@ jobs:
       inputs:
         versionSpec: '21'
         jdkArchitectureOption: 'x64'
-        jdkSourceOption: 'PreInstalled'
-      displayName: 'Install Java'
+        jdkSourceOption: 'MicrosoftHosted'
+      displayName: 'Install JDK 21'
 
     # Install Chrome 128.0.6613.137
     - script: |
@@ -41,9 +42,6 @@ jobs:
         unzip chromedriver-linux64.zip
         sudo mv chromedriver-linux64/chromedriver /usr/local/bin/
       displayName: 'Install ChromeDriver 128.0.6613.137'
-
-
-
 
 - job: Build
   dependsOn: Install
