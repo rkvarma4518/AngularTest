@@ -1,0 +1,56 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+# Install Node.js
+- task: NodeTool@0
+  inputs:
+    versionSpec: '14.x'
+  displayName: 'Install Node.js'
+
+# Install Angular CLI and dependencies
+- script: |
+    npm install -g @angular/cli
+    npm install
+  displayName: 'Install Angular CLI & dependencies'
+
+# Install JDK 21
+- task: JavaToolInstaller@0
+  inputs:
+    version: '21'
+    jdkArchitectureOption: 'x64'
+  displayName: 'Install JDK 21'
+
+# Build with Maven
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    goals: 'clean install'
+  displayName: 'Build with Maven'
+
+# Install Chrome 128.0.6613.137
+- task: ShellScript@2
+  inputs:
+    script: |
+      wget -N https://storage.googleapis.com/chrome-for-testing-public/128.0.6613.137/linux64/chrome-linux64.zip
+      unzip chrome-linux64.zip
+      sudo mv chrome-linux64 /usr/local/bin/
+      sudo ln -sf /usr/local/bin/chrome-linux64/chrome /usr/bin/google-chrome
+  displayName: 'Install Chrome 128.0.6613.137'
+
+# Install ChromeDriver 128.0.6613.137
+- task: ShellScript@2
+  inputs:
+    script: |
+      wget -N https://storage.googleapis.com/chrome-for-testing-public/128.0.6613.137/linux64/chromedriver-linux64.zip
+      unzip chromedriver-linux64.zip
+      sudo mv chromedriver-linux64/chromedriver /usr/local/bin/
+  displayName: 'Install ChromeDriver 128.0.6613.137'
+
+# Run Cucumber Tests
+- script: |
+    mvn test
+  displayName: 'Run Cucumber Tests'
