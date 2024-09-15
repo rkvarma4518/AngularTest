@@ -39,11 +39,6 @@ jobs:
 - job: Build
   dependsOn: Install
   steps:
-    # Build Angular Application
-    - script: |
-        ng build --prod
-      displayName: 'Build Angular App'
-
     # Build with Maven
     - task: Maven@3
       inputs:
