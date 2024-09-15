@@ -28,20 +28,16 @@ jobs:
       displayName: 'Install Java'
 
     # Install Chrome 128.0.6613.137
-    - task: ShellScript@2
-      inputs:
-        script: |
-          wget -N https://storage.googleapis.com/chrome-for-testing-public/128.0.6613.137/linux64/chrome-linux64.zip
-          unzip chrome-linux64.zip
-          sudo mv chrome-linux64 /usr/local/bin/
-          sudo ln -sf /usr/local/bin/chrome-linux64/chrome /usr/bin/google-chrome
+    - script: |
+        wget -N https://storage.googleapis.com/chrome-for-testing-public/128.0.6613.137/linux64/chrome-linux64.zip
+        unzip chrome-linux64.zip
+        sudo mv chrome-linux64 /usr/local/bin/
+        sudo ln -sf /usr/local/bin/chrome-linux64/chrome /usr/bin/google-chrome
       displayName: 'Install Chrome 128.0.6613.137'
 
     # Install ChromeDriver 128.0.6613.137
-    - task: ShellScript@2
-      inputs:
-        script: |
-          wget -N https://storage.googleapis.com/chrome-for-testing-public/128.0.6613.137/linux64/chromedriver-linux64.zip
-          unzip chromedriver-linux64.zip
-          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/
+    - script: |
+        wget -N https://storage.googleapis.com/chrome-for-testing-public/128.0.6613.137/linux64/chromedriver-linux64.zip
+        unzip chromedriver-linux64.zip
+        sudo mv chromedriver-linux64/chromedriver /usr/local/bin/
       displayName: 'Install ChromeDriver 128.0.6613.137'
