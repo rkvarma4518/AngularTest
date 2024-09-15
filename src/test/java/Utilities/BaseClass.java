@@ -33,6 +33,11 @@ public class BaseClass {
 			ChromeOptions options = new ChromeOptions();
 			// Optional: remove headless if not required
 			options.addArguments("--headless");
+			options.addArguments("--no-sandbox");
+			options.addArguments("--disable-dev-shm-usage");
+			options.addArguments("--remote-allow-origins=*");
+			options.addArguments("--disable-gpu");  // Disable GPU if not available
+			options.addArguments("--window-size=1920,1080");  // Set a window size to avoid resolution-related issues
 
 			driver = new ChromeDriver(options);
 			if (driver == null) {
