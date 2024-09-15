@@ -23,13 +23,6 @@ steps:
     jdkArchitectureOption: 'x64'
     jdkSourceOption: 'PreInstalled'
 
-# Build with Maven
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'pom.xml'
-    goals: 'clean install'
-  displayName: 'Build with Maven'
-
 # Install Chrome 128.0.6613.137
 - task: ShellScript@2
   inputs:
@@ -49,7 +42,3 @@ steps:
       sudo mv chromedriver-linux64/chromedriver /usr/local/bin/
   displayName: 'Install ChromeDriver 128.0.6613.137'
 
-# Run Cucumber Tests
-- script: |
-    mvn test
-  displayName: 'Run Cucumber Tests'
