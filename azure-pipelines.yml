@@ -41,3 +41,34 @@ jobs:
         unzip chromedriver-linux64.zip
         sudo mv chromedriver-linux64/chromedriver /usr/local/bin/
       displayName: 'Install ChromeDriver 128.0.6613.137'
+
+
+
+
+- job: Build
+  dependsOn: Install
+  steps:
+    # Build Angular Application
+    - script: |
+        ng build --prod
+      displayName: 'Build Angular App'
+
+    # Build with Maven
+    - task: Maven@3
+      inputs:
+        mavenPomFile: 'pom.xml'
+        goals: 'clean install'
+      displayName: 'Build Java Project with Maven'
+
+    # Run Cucumber Tests
+    - script: |
+        mvn test
+      displayName: 'Run Cucumber Tests'
+
+    # Publish build artifacts (Optional)
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathToPublish: 'target'
+        artifactName: 'drop'
+        publishLocation: 'Container'
+      displayName: 'Publish Artifacts'
