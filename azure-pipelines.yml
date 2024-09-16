@@ -62,7 +62,6 @@ jobs:
       inputs:
         mavenPomFile: 'pom.xml'
         goals: 'mvn clean install'
-        jdkVersionOption: '21'
       displayName: 'Build Java Project with Maven'
 
     # Run Cucumber Tests
