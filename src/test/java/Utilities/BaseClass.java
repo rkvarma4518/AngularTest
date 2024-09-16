@@ -28,7 +28,7 @@ public class BaseClass {
 				System.out.println("----------------------------------------------------------------------------");
 			}
 			// Set the path to your local chromedriver.exe
-			System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
+			System.setProperty("webdriver.chrome.driver", "chromedriver");
 
 			ChromeOptions options = new ChromeOptions();
 			// Optional: remove headless if not required
