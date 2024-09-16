@@ -39,6 +39,9 @@ jobs:
           echo "Removing existing chromedriver-linux64.zip"
           rm chromedriver-linux64.zip
         fi
+        if [ -f /usr/local/bin/chromedriver ]; then
+          sudo rm /usr/local/bin/chromedriver
+        fi
 
         wget -N https://storage.googleapis.com/chrome-for-testing-public/128.0.6613.137/linux64/chromedriver-linux64.zip
         unzip chromedriver-linux64.zip
