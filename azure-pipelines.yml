@@ -32,6 +32,7 @@ jobs:
 
     # Install ChromeDriver 128.0.6613.137
     - script: |
+        # Ensure unzip is installed
         sudo apt-get update
         sudo apt-get install -y unzip
 
@@ -40,19 +41,31 @@ jobs:
           echo "Removing existing chromedriver-linux64.zip"
           rm chromedriver-linux64.zip
         fi
-        if [ -f /usr/local/bin/chromedriver ]; then
-          sudo rm /usr/local/bin/chromedriver
-        fi
 
+        # Download ChromeDriver
         wget -N https://storage.googleapis.com/chrome-for-testing-public/128.0.6613.137/linux64/chromedriver-linux64.zip
+
+        # Unzip ChromeDriver
         unzip chromedriver-linux64.zip
+
+        # Execute ls command to check where the file is unzipped
+        echo "Checking contents of current directory after unzip:"
+        ls -l
+
+        # Execute ls command inside the unzipped folder
+        echo "Checking contents of chromedriver_linux64 directory:"
+        ls -l chromedriver-linux64
+
+        # Move ChromeDriver to /usr/local/bin/
         sudo mv chromedriver-linux64/chromedriver /usr/local/bin/
+
+        # Set executable permissions
         sudo chmod +x /usr/local/bin/chromedriver
 
         # Verify installation
-        ls -l /usr/local/bin/chromedriver
+        /usr/local/bin/chromedriver --version
         chromedriver --version
-      displayName: 'Install ChromeDriver 128.0.6613.137'
+      displayName: 'Install and Verify ChromeDriver'
 
 - job: Build
   dependsOn: Install
