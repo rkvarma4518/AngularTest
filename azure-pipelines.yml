@@ -48,14 +48,6 @@ jobs:
         # Unzip ChromeDriver
         unzip chromedriver-linux64.zip
 
-        # Execute ls command to check where the file is unzipped
-        echo "Checking contents of current directory after unzip:"
-        ls -l
-
-        # Execute ls command inside the unzipped folder
-        echo "Checking contents of chromedriver_linux64 directory:"
-        ls -l chromedriver-linux64
-
         # Move ChromeDriver to /usr/local/bin/
         sudo mv chromedriver-linux64/chromedriver /usr/local/bin/
 
@@ -71,11 +63,9 @@ jobs:
   dependsOn: Install
   steps:
     # Build with Maven
-    - task: Maven@1
-      inputs:
-        mavenPomFile: 'pom.xml'
-        goals: 'clean install -X'
-      displayName: 'Build Java Project with Maven'
+    - script: |
+        mvn install
+      displayName: 'build jar'
 
     # Run Cucumber Tests
     - script: |
