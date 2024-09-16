@@ -27,6 +27,7 @@ jobs:
         unzip chrome-linux64.zip
         sudo mv chrome-linux64 /usr/local/bin/
         sudo ln -sf /usr/local/bin/chrome-linux64/chrome /usr/bin/google-chrome
+        google-chrome --version
       displayName: 'Install Chrome 128.0.6613.137'
 
     # Install ChromeDriver 128.0.6613.137
