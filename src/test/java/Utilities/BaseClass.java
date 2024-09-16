@@ -43,10 +43,11 @@ public class BaseClass {
 			options.addArguments("--window-size=1920,1080");  // Set a window size to avoid resolution-related issues
 			System.out.println("5");
 			driver = new ChromeDriver(options);
+			System.out.println("6");
 			if (driver == null) {
 				System.out.println("----------------------------------------------------------------------------");
 			}
-
+			System.out.println("7");
 			System.out.println("Chrome browser launched");
 		} else if (browserName.equals("firefox")) {
 			// Add Firefox driver initialization here if needed
