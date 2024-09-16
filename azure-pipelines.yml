@@ -58,10 +58,11 @@ jobs:
   dependsOn: Install
   steps:
     # Build with Maven
-    - task: Maven@3
+    - task: Maven@1
       inputs:
         mavenPomFile: 'pom.xml'
-        goals: 'clean install -X'
+        goals: 'mvn clean install'
+        jdkVersionOption: '21'
       displayName: 'Build Java Project with Maven'
 
     # Run Cucumber Tests
