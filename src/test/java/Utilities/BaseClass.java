@@ -28,17 +28,20 @@ public class BaseClass {
 				System.out.println("----------------------------------------------------------------------------");
 			}
 			// Set the path to your local chromedriver.exe
+			System.out.println("1");
 			System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
-
+			System.out.println("2");
 			ChromeOptions options = new ChromeOptions();
+			System.out.println("3");
 			// Optional: remove headless if not required
 			options.addArguments("--headless");
+			System.out.println("4");
 			options.addArguments("--no-sandbox");
 			options.addArguments("--disable-dev-shm-usage");
 			options.addArguments("--remote-allow-origins=*");
 			options.addArguments("--disable-gpu");  // Disable GPU if not available
 			options.addArguments("--window-size=1920,1080");  // Set a window size to avoid resolution-related issues
-
+			System.out.println("5");
 			driver = new ChromeDriver(options);
 			if (driver == null) {
 				System.out.println("----------------------------------------------------------------------------");
