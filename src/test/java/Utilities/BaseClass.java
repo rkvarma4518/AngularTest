@@ -22,6 +22,8 @@ public class BaseClass {
 
 		String browserName = PropertyReader.getValue("browser");
 		System.out.println(browserName);
+		System.out.println("ChromeDriver version: " + ((RemoteWebDriver) driver).getCapabilities().getVersion());
+
 
 		if (browserName.equals("chrome")) {
 			if (driver == null) {
